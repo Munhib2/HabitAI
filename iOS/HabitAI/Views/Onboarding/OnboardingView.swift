@@ -92,10 +92,10 @@ struct OnboardingPage2: View {
 }
 
 struct OnboardingPage3: View {
-    var auth: AuthViewModel
+    @ObservedObject var auth: AuthViewModel
 
     var body: some View {
-        VStack(spacing: 32) {
+        VStack(spacing: 24) {
             Spacer()
             Image(systemName: "chart.line.uptrend.xyaxis")
                 .font(.system(size: 80))
@@ -111,7 +111,9 @@ struct OnboardingPage3: View {
             Spacer()
 
             if auth.isLoading {
-                ProgressView().tint(.white)
+                ProgressView()
+                    .tint(.white)
+                    .scaleEffect(1.2)
             } else {
                 SignInWithAppleButton(.signIn) { request in
                     request.requestedScopes = [.fullName, .email]
@@ -127,18 +129,25 @@ struct OnboardingPage3: View {
                     Task { await auth.signInAsDemo() }
                 } label: {
                     Text("Or Explore in Demo Mode")
-                        .font(.subheadline).bold()
+                        .font(.headline)
                         .foregroundColor(.white)
-                        .padding(.vertical, 8)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Color.white.opacity(0.2))
+                        .cornerRadius(14)
+                        .padding(.horizontal, 32)
                 }
+                .buttonStyle(.plain)
             }
 
             if let error = auth.error {
                 Text(error)
-                    .foregroundColor(.red)
+                    .foregroundColor(.yellow)
                     .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 24)
             }
-            Spacer().frame(height: 40)
+            Spacer().frame(height: 30)
         }
     }
 }

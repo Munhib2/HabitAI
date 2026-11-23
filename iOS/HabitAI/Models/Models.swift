@@ -1,13 +1,14 @@
 import Foundation
 
 // MARK: - User
+// MARK: - User
 struct User: Codable, Identifiable {
     let id: String
     var displayName: String
     var email: String?
     var subscriptionTier: SubscriptionTier
-    var timezone: String
-    var createdAt: String
+    var timezone: String?
+    var createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id, email, timezone

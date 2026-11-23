@@ -22,7 +22,12 @@ enum APIError: LocalizedError {
 
 class APIClient {
     static let shared = APIClient()
-    private let baseURL = "http://localhost:3000/api"  // Change to deployed URL when you deploy
+    #if targetEnvironment(simulator)
+    private let baseURL = "http://localhost:3000/api"
+    #else
+    private let baseURL = "http://192.168.18.194:3000/api"
+    #endif
+
     private var authToken: String? {
         get { UserDefaults.standard.string(forKey: "auth_token") }
         set { UserDefaults.standard.set(newValue, forKey: "auth_token") }

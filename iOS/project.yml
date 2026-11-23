@@ -1,0 +1,16 @@
+name: HabitAI
+options:
+  bundleIdPrefix: com.habitai
+targets:
+  HabitAI:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources: [HabitAI]
+    info:
+      path: HabitAI/Info.plist
+      properties:
+        NSSpeechRecognitionUsageDescription: "Voice input for logging habits"
+        NSMicrophoneUsageDescription: "Microphone access for voice habits"
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
