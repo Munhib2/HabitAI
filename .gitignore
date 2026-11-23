@@ -1,0 +1,32 @@
+# Environment secrets — NEVER commit these
+backend/.env
+backend/apns-key.p8
+
+# Node
+backend/node_modules/
+backend/npm-debug.log*
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Xcode
+iOS/*.xcodeproj/xcuserdata/
+iOS/*.xcworkspace/xcuserdata/
+iOS/DerivedData/
+iOS/build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# Swift Package Manager
+iOS/.build/
+iOS/Packages/
+
+# CocoaPods
+iOS/Pods/
